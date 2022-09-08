@@ -1,0 +1,15 @@
+<h1>Purchase Order</h1>
+
+<div class="flex-container">
+  <app-order-form #orderform class="flex-item">
+    <button
+      class="button"
+      type="button"
+      [disabled]="orderForm?.invalid"
+      (click)="saveOrder()"
+    >
+      Save
+    </button>
+  </app-order-form>
+  <app-order-list class="flex-item" (onUpdate)="update($event)"></app-order-list>
+</div>

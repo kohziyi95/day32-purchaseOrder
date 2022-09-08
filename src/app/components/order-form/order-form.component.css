@@ -1,0 +1,15 @@
+.inputGroup {
+  margin: 15px 0;
+}
+
+.button {
+  margin: 10px 10px;
+  width: 50%;
+  align-self: center;
+}
+
+.notice {
+  margin-left: 10px;
+  color: red;
+}
+

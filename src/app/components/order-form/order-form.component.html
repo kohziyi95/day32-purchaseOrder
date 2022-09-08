@@ -1,0 +1,59 @@
+<h1>Order</h1>
+
+<form [formGroup]="orderForm">
+  <div class="inputGroup">
+    <label for="name">Name: </label
+    ><input
+      type="text"
+      placeholder="Your name"
+      size="30"
+      formControlName="name"
+    />
+    <span *ngIf="hasError('name') && orderForm.dirty" class="notice"
+      >Name Required.</span
+    >
+  </div>
+  <div class="inputGroup">
+    <label for="mobile">Mobile: </label
+    ><input
+      type="text"
+      placeholder="Your mobile number"
+      formControlName="mobile"
+    />
+    <span *ngIf="hasError('mobile') && orderForm.dirty" class="notice"
+      >Please input a valid mobile number.</span
+    >
+  </div>
+  <div class="inputGroup">
+    <ng-content ng-content></ng-content>
+  </div>
+  <h2 *ngIf="itemArrayCtrl.length <= 0">Add a new item to your order!</h2>
+  <table *ngIf="itemArrayCtrl.length > 0">
+    <thead>
+      <tr>
+        <th>Name</th>
+        <th>Quantity</th>
+      </tr>
+    </thead>
+    <tbody formArrayName="items">
+      <tr
+        *ngFor="let item of itemArrayCtrl.controls; let idx = index"
+        [formGroup]="item"
+      >
+        <td><input type="text" formControlName="itemName" /></td>
+        <td>
+          <select formControlName="quantity">
+            <option *ngFor="let i of [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]" value="i">
+              {{ i }}
+            </option>
+          </select>
+        </td>
+        <td><button type="delete" (click)="delete(idx)">X</button></td>
+      </tr>
+      <tr></tr>
+    </tbody>
+  </table>
+  <div>
+    <button class="button" type="button" (click)="addItem()">Add</button>
+  </div>
+</form>

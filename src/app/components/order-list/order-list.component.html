@@ -1,0 +1,19 @@
+<h1>Order List</h1>
+
+<h2 *ngIf="ordersDB.size == 0">No Orders Added.</h2>
+<table *ngIf="ordersDB.size > 0">
+  <thead>
+    <tr>
+      <th>OrderId</th>
+      <th>Name</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let i of ordersDB | keyvalue">
+      <td>{{ i.key }}</td>
+      <td>{{ i.value.name }}</td>
+      <button type="button" (click)="update(i.key)">Update</button>
+      <button type="button" (click)="delete(i.key)">X</button>
+    </tr>
+  </tbody>
+</table>
